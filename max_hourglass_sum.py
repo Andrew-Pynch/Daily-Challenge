@@ -1,6 +1,7 @@
 #!/bin/python3
 # 7/1/2019 - Andrew Pynch
-# This was by far the hardest of the mini challenges I have completed thusfar. Please make a pull request on this file if you feel I can make this code more pythonic or more efficient :-)
+# This was by far the hardest of the mini challenges I have completed thusfar. 
+# Please make a pull request on this file if you feel I can make this code more pythonic or more efficient :-)
 '''
                             Problem description
 Given the 6x6 matrix A, return the sum of the largest possible hourglass.
