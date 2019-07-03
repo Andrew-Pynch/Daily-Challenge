@@ -10,4 +10,4 @@ Despite the valid points this video makes, I am beginning to understand that in 
 engineer, I need to have mastery of OOT and related concepts. 
   -Conretely: I need to find a project that will require use of OOT and related concepts and then complete that project ASAP
   
- -Implement a library of common machine learning algorithms and tools to develop proficiency at the lowest level of the conceptual hierarchy. As Feynman famously said "What I cannot create, I do not understand."
+-Implement a library of common machine learning algorithms and tools to develop proficiency at the lowest level of the conceptual hierarchy. As Feynman famously said "What I cannot create, I do not understand."
