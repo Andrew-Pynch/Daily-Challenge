@@ -15,8 +15,8 @@ class MyBook(Book): # Pass Book because MyBook inherits from Book
 
     def display(self):
         print('Title:', self.title)
-        print('Author:' self.author)
-        print('Price:' self.price)
+        print('Author:', self.author)
+        print('Price:', self.price)
 
 title=input()
 author=input()
