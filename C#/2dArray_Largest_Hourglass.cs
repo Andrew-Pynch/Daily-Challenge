@@ -1,16 +1,3 @@
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.Collections;
-using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.Serialization;
-using System.Text.RegularExpressions;
-using System.Text;
-using System;
 // 7-3-2019 @ Andrew Pynch
 // C# implementation
 // Please make a pull request and show changes that could make my code more optimal
@@ -46,30 +33,37 @@ using System;
 
 class Solution
 {
-    var rows = Console.ReadLine(); // Take user input for number of rows
-    var col = Console.ReadLine(); // Take user input for number of columns
-    static void Main(String[] args)
-    {
-        int[][] arr = new int[rows][];
-        for (int rows = 0; rows < 6; rows++)
-        {
-            var tmp = Console.ReadLine().Split(' ');
-            arr[i] = Array.ConvertAll(tmp, int.Parse);
-        }
+   // n_Rows = number of rows in our matrix
+   // n_Cols = number of columns in our matrix
+   int n_Rows = Convert.ToInt32(Console.ReadLine()); // User input 
+   int n_Cols = Convert.ToInt32(Console.ReadLine());; 
 
-        int max = -9 * 7;
-        for (int rows = 0; rows < 6; rows++)
-        {
-            for (int cols = 0; cols < 6; cols++)
-            {
-                if (cols + 2 < 6 && cols + 2 < 6)
-                {
-                    int sum = arr[rows][cols] + arr[rows][cols + 1] + arr[rows][cols + 2] + arr[rows + 1][cols + 1] + arr[rows + 2][cols] + arr[rows + 2][cols + 1] + arr[rows + 2][cols + 2];
-                    if (sum > max) max = sum;
-                }
-            }
-        }
-
-        Console.WriteLine(max);
-    }
+   static void Main(String[] args)
+   {
+       Random random = new Random(); // Variable to populate matrix
+       int[ , ] arr = new int[n_Rows, n_Cols]; // arr = Array with dimensions NxM
+       // Populate the matrix
+       for (int n = 0; n < n_Rows; n++)
+       {
+           for (int m = 0; m < n_Cols; m++)
+           {
+               arr[n,m] = random.Next(0, 25); // Populate with values 0 through 25
+           }
+           Console.WriteLine(arr);
+       }
+       // We will index our matrix by the ith row and jth column
+       int maxSum = 0;
+       for (int i = 0; i < n_Rows; i++)
+       {
+           for (int j = 0; j < n_Cols; j++)
+           {
+               int sum = arr[i][j] + arr[i][j + 1] + arr[i][j + 2] + arr[i + 1][j + 1] + arr[i + 2][j] + arr[i + 2][j + 1] + arr[i + 2][j + 2];
+               if (sum > maxSum)
+               {
+                   maxSum = sum;
+               }
+           }
+       }
+       Console.WriteLine(maxSum);
+   }
 }
