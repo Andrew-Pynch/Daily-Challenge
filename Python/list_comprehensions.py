@@ -38,3 +38,19 @@ B = [2, 4, 6, 8]
 
 cartesian_product = [(a, b) for a in A for b in B]
 print(cartesian_product)
+
+
+sentence = "the quick brown fox jumps over the lazy dog"
+words = sentence.split()
+word_lengths = []
+
+for word in words:
+      if word != "the":
+          word_lengths.append(len(word))
+
+
+print(words)
+print(word_lengths)
+
+for i in range(len(words):
+    print("Word is %s and length of word is %s." % (word, word_lengths[i]))

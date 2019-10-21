@@ -14,4 +14,3 @@ def swap_case(s):
 
     return(chars)
 
-if __name__ == '__main__':
