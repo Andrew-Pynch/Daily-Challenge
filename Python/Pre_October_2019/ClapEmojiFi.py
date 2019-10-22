@@ -1,0 +1,1 @@
+words = str(input('Enter the string you would like to clapify: '))
