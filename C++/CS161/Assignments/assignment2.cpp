@@ -12,11 +12,21 @@ Description: Simple program to calculate take home pay after deductions and taxe
 
 using namespace std; // now we don't have to affix inputs / outputs with std::cout etc...
 
-
 int check_range(int lower_bound, int upper_bound, int test_value)
 {
-    
-    
-
-
+    if (lower_bound < test_value < upper_bound)
+    {
+        return << test_value << "is between " << lower_bound << " and " << upper_bound << endl;
+    }
+    else
+    {
+        return << test_value << "is not between " << lower_bound << " and " << upper_bound << endl;
+    }
 }
+
+
+int main()
+{
+    return 0;
+}
+
