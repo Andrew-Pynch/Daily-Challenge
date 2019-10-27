@@ -60,6 +60,17 @@ Parameters: int
 Pre-Conditions: int input 
 Post-Conditions: bool
 */
+bool is_even(int number)
+{
+    if (number % 2 == 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 
 
 /*
@@ -153,8 +164,8 @@ Post-Conditions: int
 
 int main()
 {
-
-
+    cout << "Testing 'check_range()' with lower=0, test_val=1, and upperbound=2" << endl;
+    check_range()
 
 
 
