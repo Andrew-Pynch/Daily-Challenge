@@ -12,21 +12,58 @@ Description: Simple program to calculate take home pay after deductions and taxe
 
 using namespace std; // now we don't have to affix inputs / outputs with std::cout etc...
 
-int check_range(int lower_bound, int upper_bound, int test_value)
+/*
+Function: check_range()
+Description: Tests if test_value is in range of lower, and upper bound
+Parameters: lower_boundm test_value, upper_bound 
+Pre-Conditions: int inputs
+Post-Conditions: bool indicating if test is in range
+*/
+bool check_range(int lower_bound, int test_value, int upper_bound)
 {
     if (lower_bound < test_value < upper_bound)
     {
-        return << test_value << "is between " << lower_bound << " and " << upper_bound << endl;
+        return true;
     }
     else
     {
-        return << test_value << "is not between " << lower_bound << " and " << upper_bound << endl;
+        return false;
     }
 }
 
 
+/*
+Function: is_capital()
+Description: Tests is a character is capital
+Parameters: char
+Pre-Conditions: Char input
+Post-Conditions: bool indicating whether input was upper or not
+*/
+// CHECK IF CHARACTER IS UPPER
+bool is_capital(char letter)
+{
+    char uppercase_letter = 'A';
+
+    while (uppercase_letter >= 'A' && uppercase_letter <= 'Z')
+    {
+        if (letter == uppercase_letter)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        uppercase_letter++;       
+    }
+}
+
+
+
+
+
 int main()
 {
-    return 0;
+    is_capital('a');
 }
 
