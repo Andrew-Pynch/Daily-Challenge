@@ -3,12 +3,14 @@ using namespace std;
 
 int main()
 {
-char letter = 'A';
+    char letter = 'g';
 
-while (letter >= 'A' && letter <= 'Z')
-{
-cout << letter << endl; 
-letter++;
-}
-return 0;
+    if (letter >= 'A' && letter <= 'Z')
+    {
+        cout << 0;
+    }
+    else
+    {
+        cout << 1;
+    }
 }

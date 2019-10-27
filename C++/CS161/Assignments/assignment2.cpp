@@ -42,19 +42,13 @@ Post-Conditions: bool indicating whether input was upper or not
 // CHECK IF CHARACTER IS UPPER
 bool is_capital(char letter)
 {
-    char uppercase_letter = 'A';
-
-    while (uppercase_letter >= 'A' && uppercase_letter <= 'Z')
+    if (letter >= 'A' && letter <= 'Z')
     {
-        if (letter == uppercase_letter)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-        uppercase_letter++;       
+        cout << false;
+    }
+    else
+    {
+        cout << true;
     }
 }
 
