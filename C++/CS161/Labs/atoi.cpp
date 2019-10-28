@@ -13,9 +13,9 @@ int main()
 {
     char character;
      
-    cout << "Please enter a single character: ";
+    cout << "Please enter a single character: " << endl;
     cin >> character;
-    cout << "ASCII Value of " << character << " is " << int(character);
+    cout << "ASCII Value of " << character << " is " << int(character) << endl;
     
     return 0;
 }
