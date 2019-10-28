@@ -9,6 +9,7 @@ Description: Simple program to calculate take home pay after deductions and taxe
 #include <stdlib.h> // rand() function
 #include <math.h> // pow() function
 #include <sstream>
+#include <string>
 
 using namespace std; // now we don't have to affix inputs / outputs with std::cout etc...
 
@@ -80,6 +81,17 @@ Parameters: int
 Pre-Conditions: int input 
 Post-Conditions: bool
 */
+bool is_odd(int number)
+{
+    if (number % 2 != 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }   
+}
 
 
 /*
@@ -89,6 +101,21 @@ Parameters: num1, num2
 Pre-Conditions: int input
 Post-Conditions: -1, 0 , 1
 */
+int equality_test(int num1, int num2)
+{
+    if (num1 < num2)
+    {
+        return -1;
+    }
+    else if (num1 == num2)
+    {
+        return 0;
+    }
+    else if (num1 > num2)
+    {
+        return 1;
+    }
+}
 
 
 /*
@@ -98,6 +125,17 @@ Parameters: string num
 Pre-Conditions: string input
 Post-Conditions: bool
 */
+bool is_int(char num)
+{
+    if ((num >= '0') && (num <= '9'))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }    
+}
 
 
 /*
@@ -107,15 +145,44 @@ Parameters: string sentence
 Pre-Conditions: string input
 Post-Conditions: bool
 */
+bool numbers_present(string sentence)
+{
+    for (int i=0; i<=sentence.length(); i++)
+    {
+        if (is_int(sentence[i]) == true)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+}
 
 
 /*
 Function: letters present
-Description: Checks if a string contains numbers
+Description: Checks if a string contains letters
 Parameters: string sentence
 Pre-Conditions: string input
 Post-Conditions: bool
 */
+bool letters_present(string sentence)
+{
+    for (int i=0; i<=sentence.length(); i++)
+    {
+        if ((65 <= int(sentence[i]) <= 90) || (97 <= int(sentence[i]) <= 122))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }   
+    }
+}
+
 
 
 /*
@@ -125,6 +192,25 @@ Parameters: string sentence, string substring
 Pre-Conditions: string input
 Post-Conditions: bool
 */
+int FindSubstringindex(const string *parentstring, const string *substring) {
+  int e = 0, indx = -1;
+  const char *parentcstring = parentstring->c_str();
+  const char *csubstring = substring->c_str();
+ 
+  for (int i = 0; i < strlen(parentcstring); i++) {
+      if (parentcstring[i] == csubstring[e]) {
+  	  if (e == 0) 
+  	  	indx = i;
+  	  e++;
+  	  if (e == strlen(csubstring)) {
+  	  	return indx;
+  	  } else {
+  		e = 0;
+  	  }
+      }
+  }
+  return -1;
+}
 
 
 /*
@@ -164,10 +250,237 @@ Post-Conditions: int
 
 int main()
 {
-    cout << "Testing 'check_range()' with lower=0, test_val=1, and upperbound=2" << endl;
-    check_range()
+    cout << "TESTING check_range()" << endl;
+    cout << "Values : lower=0, test=1, upper=2" << endl;
+    cout << "Expected: true" << endl;
+    cout << "Actual: ";
+    if (check_range(0, 1, 2) == true)
+    {
+        cout << "true: TEST PASSED" << endl;
+
+    }
+    else
+    {
+        cout << "false: TEST FAILED" << endl;
+    }
+    cout << endl;
+    cout << "TESTING check_range()" << endl;
+    cout << "Values: lower=0, test=3, upper=2" << endl;
+    cout << "Expected: false" << endl;
+    cout << "Actual: ";
+    if (check_range(0, 3, 2) == true)
+    {
+        cout << "false: TEST PASSED" << endl;
+
+    }
+    else
+    {
+        cout << "true: TEST FAILED" << endl;
+    }
+    cout << endl;
+    cout << endl;
+    cout << endl;
 
 
 
+    cout << "TESTING is_capital " << endl;
+    cout << "Values: 'g'" << endl;
+    cout << "Expected: false" << endl;
+    cout << "Actual: ";
+    if (is_capital('g') == false)
+    {
+        cout << "false: TEST PASSED" << endl;
+    }
+    else
+    {
+        cout << "true: TEST FAILED" << endl;
+    }
+    cout << endl;
+    cout << "TESTING is_capital " << endl;
+    cout << "Values: 'G'" << endl;
+    cout << "Expected: true" << endl;
+    cout << "Actual: ";
+    if (is_capital('G') == true)
+    {
+        cout << "true: TEST PASSED" << endl;
+    }
+    else
+    {
+        cout << "false: TEST FAILED" << endl;
+    }
+    cout << endl;
+    cout << endl;
+    cout << endl;
+
+
+
+    cout << "TESTING is_even()" << endl;
+    cout << "Value: 4" << endl;
+    cout << "Expected: true" << endl;
+    cout << "Actual: ";
+    if (is_even(4) == true)
+    {
+        cout << "true: TEST PASSED" << endl;
+    }
+    else
+    {
+        cout << "false: TEST FAILED" << endl;
+    }
+    cout << endl;
+    cout << "TESTING is_even()" << endl;
+    cout << "Value: 5" << endl;
+    cout << "Expected: false" << endl;
+    cout << "Actual: ";
+    if (is_even(5) == false)
+    {
+        cout << "false: TEST PASSED" << endl;
+    }
+    else
+    {
+        cout << "true: TEST FAILED" << endl;
+    }
+    cout << endl;
+    cout << endl;
+    cout << endl;
+
+
+    cout << "TESTING is_odd()" << endl;
+    cout << "Value: 5" << endl;
+    cout << "Expected: true" << endl;
+    cout << "Actual: ";
+    if (is_odd(5) == true)
+    {
+        cout << "true: TEST PASSED" << endl;
+    }
+    else
+    {
+        cout << "false: TEST FAILED" << endl;
+    }
+    cout << endl;
+    cout << "TESTING is_odd()" << endl;
+    cout << "Value: 4" << endl;
+    cout << "Expected: false" << endl;
+    cout << "Actual: ";
+    if (is_odd(4) == false)
+    {
+        cout << "false: TEST PASSED" << endl;
+    }
+    else
+    {
+        cout << "true: TEST FAILED" << endl;
+    }
+    cout << endl;
+    cout << endl;
+    cout << endl;
+
+
+
+
+    cout << "TESTING equality_test()" << endl;
+    cout << "Values: [1, 2], [2, 2], [3, 2]" << endl;
+    cout << "Expected: -1, 0, 1" << endl;
+    cout << "Actual: ";
+    if (equality_test(1, 2) == -1 && equality_test(2, 2) == 0 && equality_test(3, 2) == 1)
+    {
+        cout << "-1, 0, 1: TEST PASSED" << endl;
+    }
+    else
+    {
+        cout << "False" << endl;
+    }
+    cout << endl;
+    cout << endl;
+    cout << endl;
+
+
+    cout << "TESTING is_int()" << endl;
+    cout << "Values: 1" << endl;
+    cout << "Expected: true" << endl;
+    cout << "Actual: ";
+    if (is_int('1') == true)
+    {
+        cout << "true: TEST PASSED" << endl;
+    }
+    else
+    {
+        cout << "false: TEST FAILED" << endl;
+    }
+    cout << endl;
+    cout << "TESTING is_int()" << endl;
+    cout << "Values: a" << endl;
+    cout << "Expected: false" << endl;
+    cout << "Actual: ";
+    if (is_int('a') == false)
+    {
+        cout << "false: TEST PASSED" << endl;
+    }
+    else
+    {
+        cout << "true: TEST FAILED" << endl;
+    }
+    cout << endl;
+    cout << endl;
+    cout << endl;
+
+
+
+
+    cout << "TESTING numbers_present()" << endl;
+    cout << "Values: 'hello'" << endl;
+    cout << "Expected: false" << endl;
+    cout << "Actual: ";
+    if (numbers_present("Hello") == false)
+    {
+        cout << "true: TEST PASSED" << endl;
+    }
+    else
+    {
+        cout << "false: TEST FAILED" << endl;
+    }
+    cout << endl;
+    cout << "TESTING numbers_present()" << endl;
+    cout << "Values: 'he22o'" << endl;
+    cout << "Expected: true" << endl;
+    cout << "Actual: ";
+    if (numbers_present("He22o") == true)
+    {
+        cout << "true: TEST PASSED" << endl;
+    }
+    else
+    {
+        cout << "true: TEST PASSED" << endl;
+    }
+    cout << endl;
+    cout << endl;
+    cout << endl;
+
+
+
+    cout << "TESTING letters_present()" << endl;
+    cout << "Values: 21 Hello" << endl;
+    cout << "Expeced: true" << endl;
+    cout << "Actual: ";
+    if (letters_present("21 Hello") == true)
+    {
+        cout << "true: TEST PASSED" << endl;
+    }
+    else 
+    {
+        cout << "false: TEST FAILED" << endl;
+    }
+=
+    
+    const string extendedParentstring = "Hello extended string Agnosticdev, I love Tutorials";
+    const string substring = "Agnosticdev";
+
+    // Alternative Approach
+    int substringIndex = FindSubstringindex(&extendedParentstring, &substring);
+    cout << "Substring found at index " << substringIndex << endl;
+ 
+
+
+
+
+    
 }
 
