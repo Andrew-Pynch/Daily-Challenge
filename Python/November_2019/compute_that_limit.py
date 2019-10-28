@@ -1,5 +1,5 @@
 from sympy import var
-from sympy import symplify
+from sympy import simplify
 
 
 def compute_limit():
