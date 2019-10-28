@@ -9,7 +9,7 @@ Description: Simple program to calculate take home pay after deductions and taxe
 #include <stdlib.h> // rand() function
 #include <math.h> // pow() function
 #include <sstream>
-#include <string>
+#include <cstring>
 
 using namespace std; // now we don't have to affix inputs / outputs with std::cout etc...
 
@@ -192,24 +192,20 @@ Parameters: string sentence, string substring
 Pre-Conditions: string input
 Post-Conditions: bool
 */
-int FindSubstringindex(const string *parentstring, const string *substring) {
-  int e = 0, indx = -1;
-  const char *parentcstring = parentstring->c_str();
-  const char *csubstring = substring->c_str();
- 
-  for (int i = 0; i < strlen(parentcstring); i++) {
-      if (parentcstring[i] == csubstring[e]) {
-  	  if (e == 0) 
-  	  	indx = i;
-  	  e++;
-  	  if (e == strlen(csubstring)) {
-  	  	return indx;
-  	  } else {
-  		e = 0;
-  	  }
-      }
-  }
-  return -1;
+bool contains_substring(string sentence, string substring)
+{
+    int sublen = substring.length();
+    for (int i = 0; i < sentence.length() - sublen; i++)
+    {
+        if ((sentence.at(i) == substring.at(i) && (sentence.at(i + sublen) == substring.at(i) + sublen)))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
 
 
@@ -220,6 +216,18 @@ Parameters: string sentence
 Pre-Conditions: string input
 Post-Conditions: int
 */
+int wordcount(string sentence)
+{
+    int spacecount = 0;
+    for (int i = 0; i < sentence.length(); i++)
+    {
+        if (int(sentence[i]) == 32)
+        {
+            spacecount ++;
+        }
+    }
+    return spacecount + 1;
+}
 
 
 /*
@@ -468,19 +476,80 @@ int main()
     {
         cout << "false: TEST FAILED" << endl;
     }
-=
+    cout << endl;
+    cout << "TESTING letters_present()" << endl;
+    cout << "Values: !" << endl;
+    cout << "Expeced: false" << endl;
+    cout << "Actual: ";
+    if (letters_present("!") == false)
+    {
+        cout << "false: TEST PASSED" << endl;
+    }
+    else 
+    {
+        cout << "true: TEST FAILED" << endl;
+    }    
+    cout << endl;
+    cout << endl;
+    cout << endl;
+
+
+
+
+    cout << "TESTING contains_substring()" << endl;
+    cout << "Values: Hello Andrew, Andrew" << endl;
+    cout << "Expected: true" << endl;
+    cout << "Actual: ";
+    if (contains_substring("Hello Andrew", "Andrew") == true)
+    {
+        cout << "true: TEST PASSED" << endl;
+    }
+    else
+    {
+        cout << "false: TEST FAILED" << endl;
+    }
+    cout << endl;
+    cout << "TESTING contains_substring()" << endl;
+    cout << "Values: Hello Andrew, Dank" << endl;
+    cout << "Expected: false" << endl;
+    cout << "Actual: ";
+    if (contains_substring("Hello Andrew", "Dank") == false)
+    {
+        cout << "false: TEST PASSED" << endl;
+    }
+    else
+    {
+        cout << "true: TEST FAILED" << endl;
+    }   
+    cout << endl;
+    cout << endl;
+    cout << endl;
+
+
+
+
+    cout << "TESTING wordcount()" << endl;
+    cout << "Values: Hello Roger" << endl;
+    cout << "Expected: 2" << endl;
+    cout << "Actual: ";
+    if (wordcount("Hello Roger") == 2)
+    {
+        cout << "true: TEST PASSED" << endl;
+    }    
+    else
+    {
+        cout << "false: TEST FAILED" << endl;
+    }
     
-    const string extendedParentstring = "Hello extended string Agnosticdev, I love Tutorials";
-    const string substring = "Agnosticdev";
-
-    // Alternative Approach
-    int substringIndex = FindSubstringindex(&extendedParentstring, &substring);
-    cout << "Substring found at index " << substringIndex << endl;
- 
-
-
 
 
     
+
+
+
+
+
+    return EXIT_SUCCESS;
+   
 }
 
