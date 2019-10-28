@@ -10,6 +10,7 @@ Description: Simple program to calculate take home pay after deductions and taxe
 #include <math.h> // pow() function
 #include <sstream>
 #include <cstring>
+#include <iomanip> // std::setprecision
 
 using namespace std; // now we don't have to affix inputs / outputs with std::cout etc...
 
@@ -119,6 +120,21 @@ int equality_test(int num1, int num2)
 
 
 /*
+Function: equality test float
+Description: checks if two numbers are the same to a certain decimal acccuracy
+Parameters: num1, num2, precision
+Pre-Conditions: float input
+Post-Conditions: -1, 0 , 1
+*/
+bool float_equality(float num1, float num2, float precision)
+{
+    if ((num1 - num2) < precision)
+    {
+        return true;
+    }
+}
+
+/*
 Function: is_int
 Description: checks if string is int
 Parameters: string num
@@ -197,7 +213,7 @@ bool contains_substring(string sentence, string substring)
     int sublen = substring.length();
     for (int i = 0; i < sentence.length() - sublen; i++)
     {
-        if ((sentence.at(i) == substring.at(i) && (sentence.at(i + sublen) == substring.at(i) + sublen)))
+        if ((sentence[i] == substring[i] && (sentence.at(i + sublen) == substring[i] + sublen)))
         {
             return true;
         }
@@ -237,6 +253,13 @@ Parameters: string sentence
 Pre-Conditions: string input
 Post-Conditions: uppercase sentence
 */
+string to_upper(string sentence) {
+	for (int i = 0; i < sentence.length(); i++)
+		if (sentence[i] >= 'a' and sentence[i] <= 'z')
+			sentence[i] = sentence[i] - 32;
+    // lower case / uppercase letters are +- 32 chars on the ascii table
+    return sentence;
+}
 
 
 /*
@@ -246,7 +269,13 @@ Parameters: string sentence
 Pre-Conditions: string input
 Post-Conditions: lowercase sentence
 */
-
+string to_lower(string sentence) {
+	for (int i = 0; i < sentence.length(); i++)
+		if (sentence[i] >= 'A' and sentence[i] <= 'Z')
+			sentence[i] = sentence[i] + 32;
+    // lower case / uppercase letters are +- 32 chars on the ascii table
+    return sentence;
+}
 
 /*
 Function: get int
@@ -255,6 +284,19 @@ Parameters: string prompt
 Pre-Conditions: string input from user
 Post-Conditions: int
 */
+string get_int()
+{
+    string user_input;
+    cout << "Please enter some text. I will validate if it contains integers" << endl;
+    cin >> user_input;
+    for (int i = 0; i < user_input.length(); i++)
+    {
+        if (47 < int(user_input[i] < 57))
+        {
+            return user_input;
+        }
+    }
+}
 
 int main()
 {
@@ -401,6 +443,37 @@ int main()
     cout << endl;
 
 
+
+    cout << "TESTING float_equality" << endl;
+    cout << "Values: 1.12, 1.12, .01" << endl;
+    cout << "Expected: " << endl;
+    cout << "Actual: ";
+    if (float_equality(1.12, 1.12, 0.1) == true)
+    {
+        cout << 'true: TEST PASSED' << endl;
+    }
+    else
+    {
+        cout << "false: TEST FAILED" << endl;
+    }
+    cout << endl;
+    cout << "TESTING float_equality" << endl;
+    cout << "Values: 1.1234, 1.1235, .01" << endl;
+    cout << "Expected: " << endl;
+    cout << "Actual: ";
+    if (float_equality(1.12, 1.12, 0.1) == true)
+    {
+        cout << 'true: TEST PASSED' << endl;
+    }
+    else
+    {
+        cout << "false: TEST FAILED" << endl;
+    }     
+
+
+
+
+
     cout << "TESTING is_int()" << endl;
     cout << "Values: 1" << endl;
     cout << "Expected: true" << endl;
@@ -540,16 +613,53 @@ int main()
     {
         cout << "false: TEST FAILED" << endl;
     }
+
+
+
+    cout << "TESTING to_upper()" << endl;
+    cout << "Values: hello" << endl;
+    cout << "Expected: HELLO" << endl;
+    cout << "Actual: ";
+    if (to_upper("hello") == "HELLO")
+    {
+        cout << "HELLO: TEST PASSED" << endl;
+    }
+    else
+    {
+        cout << "hello: TEST FAILED" << endl;
+    }
+    cout << endl;
+    cout << endl;
+    cout << endl;
+
+
+
+
+    cout << "TESTING to_lower()" << endl;
+    cout << "Values: HELLO" << endl;
+    cout << "Expected: hello" << endl;
+    cout << "Actual: ";
+    if (to_lower("HELLO") == "hello")
+    {
+        cout << "hello: TEST PASSED" << endl;
+    }
+    else
+    {
+        cout << "HELLO: TEST FAILED" << endl;
+    }
+    
+
+    cout << get_int();
+
+
+
+
     
 
 
-    
 
 
 
-
-
-    return EXIT_SUCCESS;
-   
+    return 0;
 }
 
