@@ -40,8 +40,6 @@ def fractions():
             again()
     
 
-
-
 void pattern(int n, int cols):
     if n == 0:
         print("* ")
