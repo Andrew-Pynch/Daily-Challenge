@@ -17,6 +17,9 @@ def fractions():
         if denominator != int:
             print("Invalid input! Whole integers only! ")
             get_denominator()
+        elif denominator == 0:
+            print("Divide by 0 error. Please try again")
+            get_denominator()
 
     numerator = numerator % 2
     denominator = denominator % 2
@@ -36,8 +39,28 @@ def fractions():
             print("Invalid input: y for yes, n for no!")
             again()
     
-def fractals():
-    rows = str(input("Please enter the number"))
+
+
+
+void pattern(int n, int cols):
+    if n == 0:
+        print("* ")
+
+    #Top half of pattern
+    pattern(n-2, col+2)
+
+    #N stars (longest line)
+    for i in range(n):
+        print("* ")
+
+    #Bottom Half
+    pattern(n-2, cols+2)
+
+        
+
+
+
+
 
     
 
