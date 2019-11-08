@@ -1,5 +1,5 @@
 // 7-3-2019 @ Andrew Pynch
-// C# implementation
+// C # implementation
 // Please make a pull request and show changes that could make my code more optimal
 
 /*
