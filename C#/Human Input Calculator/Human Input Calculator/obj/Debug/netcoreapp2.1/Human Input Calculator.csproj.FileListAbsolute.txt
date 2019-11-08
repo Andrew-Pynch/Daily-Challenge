@@ -1,0 +1,11 @@
+C:\Users\ajp01\source\repos\Human Input Calculator\Human Input Calculator\bin\Debug\netcoreapp2.1\Human Input Calculator.deps.json
+C:\Users\ajp01\source\repos\Human Input Calculator\Human Input Calculator\bin\Debug\netcoreapp2.1\Human Input Calculator.runtimeconfig.json
+C:\Users\ajp01\source\repos\Human Input Calculator\Human Input Calculator\bin\Debug\netcoreapp2.1\Human Input Calculator.runtimeconfig.dev.json
+C:\Users\ajp01\source\repos\Human Input Calculator\Human Input Calculator\bin\Debug\netcoreapp2.1\Human Input Calculator.dll
+C:\Users\ajp01\source\repos\Human Input Calculator\Human Input Calculator\bin\Debug\netcoreapp2.1\Human Input Calculator.pdb
+C:\Users\ajp01\source\repos\Human Input Calculator\Human Input Calculator\obj\Debug\netcoreapp2.1\Human Input Calculator.csprojAssemblyReference.cache
+C:\Users\ajp01\source\repos\Human Input Calculator\Human Input Calculator\obj\Debug\netcoreapp2.1\Human Input Calculator.csproj.CoreCompileInputs.cache
+C:\Users\ajp01\source\repos\Human Input Calculator\Human Input Calculator\obj\Debug\netcoreapp2.1\Human Input Calculator.AssemblyInfoInputs.cache
+C:\Users\ajp01\source\repos\Human Input Calculator\Human Input Calculator\obj\Debug\netcoreapp2.1\Human Input Calculator.AssemblyInfo.cs
+C:\Users\ajp01\source\repos\Human Input Calculator\Human Input Calculator\obj\Debug\netcoreapp2.1\Human Input Calculator.dll
+C:\Users\ajp01\source\repos\Human Input Calculator\Human Input Calculator\obj\Debug\netcoreapp2.1\Human Input Calculator.pdb

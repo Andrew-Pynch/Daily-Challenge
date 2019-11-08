@@ -1,0 +1,6 @@
+C:\Users\ajp01\source\repos\Import_Export\obj\Debug\netcoreapp2.1\Import_Export.csprojAssemblyReference.cache
+C:\Users\ajp01\source\repos\Import_Export\obj\Debug\netcoreapp2.1\Import_Export.csproj.CoreCompileInputs.cache
+C:\Users\ajp01\source\repos\Import_Export\obj\Debug\netcoreapp2.1\Import_Export.RazorAssemblyInfo.cache
+C:\Users\ajp01\source\repos\Import_Export\obj\Debug\netcoreapp2.1\Import_Export.RazorAssemblyInfo.cs
+C:\Users\ajp01\source\repos\Import_Export\obj\Debug\netcoreapp2.1\Import_Export.AssemblyInfoInputs.cache
+C:\Users\ajp01\source\repos\Import_Export\obj\Debug\netcoreapp2.1\Import_Export.AssemblyInfo.cs

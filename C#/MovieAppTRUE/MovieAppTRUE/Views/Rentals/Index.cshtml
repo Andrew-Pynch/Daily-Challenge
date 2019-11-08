@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MovieAppTRUE.Models.Rental>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DateRented)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movy.Title)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateRented)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Movy.Title)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.RentalID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.RentalID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.RentalID })
+        </td>
+    </tr>
+}
+
+</table>
