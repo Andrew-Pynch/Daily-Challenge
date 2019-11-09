@@ -133,4 +133,18 @@ int fib_recur(int n)
 }
 
 
-//
+// Fibonacci Application
+/*
+• How could you apply the Fibonacci number series to this problem?
+- The fibbonaci sequences tells us small steps (n - 1) and big steps (n - 2) for any number of stairs n
+
+• What are the base cases for counting the ways you can climb stairs by going one stair
+or two stairs at a time? 
+- 2 Stairs (can be climbed by)
+    2 small steps
+    1 big step
+
+• How many different ways can you climb 4 stairs? 5 stairs?
+4 stairs = 24 ways
+5 stairs = 120 ways
+*/
