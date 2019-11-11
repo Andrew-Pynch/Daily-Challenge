@@ -1,31 +1,10 @@
-/*
-Program: assignment3.cpp - CS161
-Author: Andrew Pynch - pyncha@oregonstate.edu
-Student ID: 932-953-192
-Description: Handle Fractions and Produce Fractals
-*/
-
-// Imports
 #include <iostream>
 #include <string>
 #include <string.h>
+#include <sstream>
 
 using namespace std;
 
-
-
-
-
-/*
-**************************
-PART 1
-FRACTION IN LOWEST TERMS
-***************************
-*/
-
-// Checks is a given string is a number
-// Returns true if s == int 
-// Returns false if s != int
 bool is_number(string s)
 {
     // We use a const iterator because we don't want the value inside this function to protect pointed to value
@@ -36,9 +15,7 @@ bool is_number(string s)
     return !s.empty() && it == s.end();
 }
 
-// Gets the numerator of a fraction 
-// Returns numerator if numerator is a whole integer
-// Continues to prompt user if input is not a whole integer
+
 int get_numerator()
 {
     string numerator;
@@ -59,32 +36,9 @@ int get_numerator()
 }
 
 
-// Gets the denominator of a fraction 
-// Returns denominator if denominator is a whole integer
-// Continues to prompt user if input is not a whole integer
-int get_denominator(int user_int)
-{
-
-}
-
-string fraction_again(string user_string)
-{
-
-}
-
-int fractions()
-{
-
-}
-
-
-
-// MAIN FUNCTION
 int main()
 {
     get_numerator();
 
-    
-    
     return 0;
 }
