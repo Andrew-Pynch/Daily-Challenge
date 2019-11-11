@@ -62,9 +62,23 @@ int get_numerator()
 // Gets the denominator of a fraction 
 // Returns denominator if denominator is a whole integer
 // Continues to prompt user if input is not a whole integer
-int get_denominator(int user_int)
+int get_denominator()
 {
+    string denominator;
+    cout << "Please enter the denominator of your fraction: ";
+    cin >> denominator;
 
+    if (is_number(denominator) == true)
+    {
+        cout << "Your denominator is " << denominator << endl;
+        int int_denominator =  atoi(denominator.c_str());
+        return int_denominator;
+    }
+    else
+    {
+        cout << "Invalid denominator, whole numbers only (This excludes 0)! No Decimals or letters either! " << endl;
+        get_denominator();
+    }
 }
 
 string fraction_again(string user_string)
@@ -72,8 +86,13 @@ string fraction_again(string user_string)
 
 }
 
-int fractions()
+int reduce_fractions()
 {
+    int numerator = get_numerator();
+    int denominator = get_denominator();
+    
+    
+
 
 }
 
@@ -82,7 +101,7 @@ int fractions()
 // MAIN FUNCTION
 int main()
 {
-    get_numerator();
+    reduce_fractions();
 
     
     

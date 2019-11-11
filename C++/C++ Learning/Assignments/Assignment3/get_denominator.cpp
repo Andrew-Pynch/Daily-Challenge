@@ -24,10 +24,12 @@ int get_denominator()
     if (is_number(denominator) == true)
     {
         cout << "Your denominator is " << denominator << endl;
+        int int_denominator =  atoi(denominator.c_str());
+        return int_denominator;
     }
     else
     {
-        cout << "Invalid denominator, whole numbers only! No Decimals or letters! " << endl;
+        cout << "Invalid denominator, whole numbers only (This excludes 0)! No Decimals or letters either! " << endl;
         get_denominator();
     }
 }
