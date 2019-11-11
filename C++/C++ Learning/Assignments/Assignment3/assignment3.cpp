@@ -20,6 +20,7 @@ FRACTION IN LOWEST TERMS
 ***************************
 */
 
+
 // Checks is a given string is a number
 // Returns true if s == int 
 // Returns false if s != int
@@ -32,6 +33,7 @@ bool is_number(string s)
     //Return
     return !s.empty() && it == s.end();
 }
+
 
 // Returns the Greatest Common Denominator of two numbers
 // input: int numerator, int denominator
@@ -52,6 +54,7 @@ int gcd(int numerator, int denominator)
         return gcd(numerator-denominator, denominator); 
     return gcd(numerator, denominator-numerator); 
 } 
+
 
 // Gets the numerator of a fraction 
 // Returns numerator if numerator is a whole integer
@@ -98,6 +101,7 @@ int get_denominator()
     }
 }
 
+
 // Reduce a fraction to lowest terms 
 // Input: int numerator, int denominator
 // Output: fraction in lowest terms
@@ -119,6 +123,7 @@ int reduce_fractions()
     cout << denominator << endl;
 
 }
+
 
 // Function to call reduce_fractions based on user input
 // Calls reduce fraction if answer = 1
@@ -143,6 +148,38 @@ void fractions_again()
 
 
 
+/*
+**************************
+PART 2
+FRACTALS 
+***************************
+*/
+
+
+void pattern(int n, int col)
+{
+    // BASE CASE (To prevent Stack Overflow)
+    if (n <= 0)
+    {
+        cout << "* " << endl;
+        return;
+    }
+
+    // TOP SECTION //
+    pattern(n-2, col + 2);
+
+
+    // A loop to print exactly col columns
+    for (int i = 0; i < col; i++) cout << " ";
+
+    // A loop to print n asterisks, each one followed by a space:
+    for (int i = 0; i < n; i++) cout << "* ";
+
+
+    // BOTTON SECTION //
+    pattern(n-2, col + 2);
+}
+
 
 // MAIN FUNCTION
 int main()
@@ -151,7 +188,25 @@ int main()
     reduce_fractions();
     fractions_again();
 
+
+
+    // Fractals
+    cout << "PART 2: Recursive Functions ~ Creating the Fractal Star" << endl;
     
+    // Initialize variables
+    int n;
+    int cols;
+
+    // Get n from user
+    cout << "Please enter n(the length of the longest line of *): ";
+    cin >> n;
+
+    // Get cols from user
+    cout << "Please enter cols(the number of columns): ";
+    cin >> cols;
+
+    // Call Recursive function "pattern"
+    pattern(n, cols);
     
     return 0;
 }
