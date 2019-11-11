@@ -13,9 +13,6 @@ Description: Handle Fractions and Produce Fractals
 using namespace std;
 
 
-
-
-
 /*
 **************************
 PART 1
@@ -35,6 +32,26 @@ bool is_number(string s)
     //Return
     return !s.empty() && it == s.end();
 }
+
+// Returns the Greatest Common Denominator of two numbers
+// input: int numerator, int denominator
+// output: int, gcd_val
+int gcd(int numerator, int denominator) 
+{  
+    if (numerator == 0) 
+       return denominator; 
+    if (denominator == 0) 
+       return numerator; 
+
+   
+    if (numerator == denominator) 
+        return numerator; 
+
+   
+    if (numerator > denominator) 
+        return gcd(numerator-denominator, denominator); 
+    return gcd(numerator, denominator-numerator); 
+} 
 
 // Gets the numerator of a fraction 
 // Returns numerator if numerator is a whole integer
@@ -81,27 +98,58 @@ int get_denominator()
     }
 }
 
-string fraction_again(string user_string)
-{
-
-}
-
+// Reduce a fraction to lowest terms 
+// Input: int numerator, int denominator
+// Output: fraction in lowest terms
 int reduce_fractions()
 {
+    // EXCLUDING COMMENTS AND WHITESPACE THIS IS < 15 LINES
+    // Initial Variables with function calls
     int numerator = get_numerator();
     int denominator = get_denominator();
-    
-    
+    int gcd_val = gcd(numerator, denominator);
 
+    // Update the values of the numerator & denominator based off of the GCD
+    numerator /= gcd_val;
+    denominator /= gcd_val;
+
+    // Print the result
+    cout << numerator << endl;
+    cout << "--" << endl;
+    cout << denominator << endl;
 
 }
+
+// Function to call reduce_fractions based on user input
+// Calls reduce fraction if answer = 1
+// Else: Contines;
+void fractions_again()
+{
+    // Ask the user if they want to run the program again
+    int answer;
+    cout << "Would you like to reduce another fraction? 0 for No! 1 for Yes! ";
+    cin >> answer;
+    if (answer == 0)
+    {
+        cout << "Thank you for reducing fractions! " << endl;
+    }
+    else
+    {
+        reduce_fractions();
+        fractions_again();
+    }  
+}
+
+
 
 
 
 // MAIN FUNCTION
 int main()
 {
+    // Run function to reduce fractions
     reduce_fractions();
+    fractions_again();
 
     
     
