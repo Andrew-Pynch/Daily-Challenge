@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <string.h>
+#include <math.h>
 
 using namespace std;
 
@@ -19,8 +20,12 @@ using namespace std;
 *********************************************************************/
 void get_string(string *str)
 {
+       string temp;
        cout << "Please enter your string: " << endl;
-       getline(cin, *str);
+       getline(cin, temp);
+       cout << temp << endl;
+
+       str = &temp;    //changes the contents of str to the value of temp.at
 }
 
 /*********************************************************************
@@ -34,12 +39,13 @@ void set_replace_string(string *copy)
 {
     for (int i = 0; i < (*copy).length(); i++)      
     {
+        cout << "In the for loop" << endl;
         if ((*copy).at(i) != ' '){
-            *copy += char(45);
+            (*copy).at(i) = char(45);
             cout << "Still working" << endl;
         }
         else{
-            *copy += char(32);
+            (*copy).at(i) = char(32);
             cout << "Still working" << endl;
         }
     }
@@ -47,7 +53,7 @@ void set_replace_string(string *copy)
 
 
 // Searches a replaced string for a letter and displays letter
-// replaced_string = "-----"
+// replaced_string = 45  - -----"
 // original_string
 /*********************************************************************
 ** Function: GET_SEARCHlength_REPLACE
@@ -71,13 +77,43 @@ int get_search_replace(char select, string str1, string &str2)
                         
 
 
-
 /*********************************************************************
  * MEMORY MANAGEMENT
  * Write functions to create memory on the heap
-*********************************************************************/                  
+*********************************************************************/ 
+void make_string()
+{
+    string *name = new string;
+}
+
+void create_loooooooong_array(int size)
+{
+    int *avrg_pen_size = new int[size];
+    for (int i = 0; i < 100; i++)
+        avrg_pen_size[i] = rand() % 9 + 1;
+     for (int i = 0; i < 100; i++)
+        cout << avrg_pen_size[i] << endl;
+    delete [] avrg_pen_size; 
+}
 
 
+
+
+int new_number()
+{
+    int *new_numbah ; 
+    new_numbah = new int[3];
+    if (*new_numbah == 2)
+    {
+        cout << "Yeah, it's two." << endl;
+    }
+    else 
+    {
+        cout << "No, it's not two." << endl;
+    }    
+    delete [] new_numbah; 
+}
+    
 
 int main() //Copy string
 {
@@ -85,22 +121,19 @@ int main() //Copy string
         
     get_string(original);
     
-    // COPY STRING 
-    string *copy = original;
+    // // COPY STRING 
+    string *copy = *original;
     
-    // FUNCTION CALLS First string sent is unaltered/original
-    
+    // // FUNCTION CALLS First string sent is unaltered/original
+    cout << "I made it here! :-)" << endl;
     set_replace_string(copy);
     
-
     // int lettersFound;
     //get_search_replace(original, copy);
     // cout << "letters found: " << lettersFound;
- 
+
+    //create_loooooooong_array(4);
     
+    //check_int();
     
 }
-
-
-//THREE FUNCTIONS WITHOUT MEMORY LEAKS:
-//

@@ -4,12 +4,11 @@
 
 using namespace std;
 
-void get_string(string *str)
+string get_string(string *str)
 {
        string temp;
        cout << "Please enter your string: " << endl;
        getline(cin, temp);
-       *str = temp;
 }
 
 
