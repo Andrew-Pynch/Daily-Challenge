@@ -50,7 +50,7 @@ int get_search_replace(char select, string str1, string &str2)
     for(int i = 0; i < str1.length; i++)
         if (str1[i] == select)
         {
-            str2[i] == select;
+            str2[i] == select;fsdg
             lettersFound++;
         }
     
