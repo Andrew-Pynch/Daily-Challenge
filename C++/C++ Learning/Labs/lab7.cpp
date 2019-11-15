@@ -37,7 +37,7 @@ void get_string(string *str)
 *********************************************************************/
 void set_replace_string(string *copy)
 {
-    for (int i = 0; i < (*copy).length(); i++)      
+    for (int i = 0; i < (copy).length(); i++)      
     {
         cout << "In the for loop" << endl;
         if ((*copy).at(i) != ' '){

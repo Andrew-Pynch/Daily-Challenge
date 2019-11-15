@@ -14,8 +14,10 @@ void get_string(string *str)
        getline(cin, temp);
        cout << temp << endl;
 
-       str = &temp;    //changes the contents of str to the value of temp.at
-                       //the address that str points to, becomes the adress of temp
+       //str = &temp;    //changes the contents of str to the value of temp.at
+                       //the address that str points to, becomes the adress of tem
+        for(int i = 0; i < temp.length(); i++)
+            str[i] = temp[i];
 }
 
 void set_replace_string()
@@ -29,7 +31,7 @@ int main()
     string *original_string;
     // Giving original string a value by calling the function get_string
     get_string(original_string);
-    cout << &original_string << " " << original_string << *original_string << endl;
+    cout << &original_string << " " << original_string << endl;
 
 
     // Set non-space characters to dashes in copy
