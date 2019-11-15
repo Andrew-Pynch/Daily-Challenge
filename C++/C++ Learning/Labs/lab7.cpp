@@ -1,6 +1,14 @@
 #include <iostream>
 #include <string>
+#include <string.h>
+
 using namespace std;
+
+
+/*********************************************************************
+ * PRACTICE FUNCTIONS
+ * Write functions to do dumb stuff with strings
+*********************************************************************/   
 
 /*********************************************************************
 ** Function: GET_STRING
@@ -12,7 +20,7 @@ using namespace std;
 void get_string(string *str)
 {
        cout << "Please enter your string: " << endl;
-       getLine(cin, str);
+       getline(cin, *str);
 }
 
 /*********************************************************************
@@ -22,13 +30,17 @@ void get_string(string *str)
 ** Pre-Conditions:  string *copy points to a string
 ** Post-Conditions: changes non-space letters in string copy to dashes
 *********************************************************************/
-void set_replace_string(string *copy){
-    for (int i = 0; i < *copy.length(); i++){
-        if (int(*copy.at(i)) != 32){
+void set_replace_string(string *copy)
+{
+    for (int i = 0; i < (*copy).length(); i++)      
+    {
+        if ((*copy).at(i) != ' '){
             *copy += char(45);
+            cout << "Still working" << endl;
         }
         else{
             *copy += char(32);
+            cout << "Still working" << endl;
         }
     }
 }
@@ -38,7 +50,7 @@ void set_replace_string(string *copy){
 // replaced_string = "-----"
 // original_string
 /*********************************************************************
-** Function: GET_SEARCH_REPLACE
+** Function: GET_SEARCHlength_REPLACE
 ** Description: Searches a replaced string for a letter and displays letter. replaced_string = "----"
 ** Parameters: string *str1, string str2
 ** Pre-Conditions: string *str1, string str2
@@ -47,10 +59,10 @@ void set_replace_string(string *copy){
 int get_search_replace(char select, string str1, string &str2)
 {
     int lettersFound;
-    for(int i = 0; i < str1.length; i++)
+    for(int i = 0; i < str1.length(); i++)
         if (str1[i] == select)
         {
-            str2[i] == select;fsdg
+            str2[i] == select;
             lettersFound++;
         }
     
@@ -58,11 +70,12 @@ int get_search_replace(char select, string str1, string &str2)
 }
                         
 
+
+
 /*********************************************************************
  * MEMORY MANAGEMENT
  * Write functions to create memory on the heap
 *********************************************************************/                  
-
 
 
 
@@ -76,11 +89,18 @@ int main() //Copy string
     string *copy = original;
     
     // FUNCTION CALLS First string sent is unaltered/original
+    
     set_replace_string(copy);
-
     
 
+    // int lettersFound;
+    //get_search_replace(original, copy);
+    // cout << "letters found: " << lettersFound;
  
     
     
 }
+
+
+//THREE FUNCTIONS WITHOUT MEMORY LEAKS:
+//
