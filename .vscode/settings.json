@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "C:\\Users\\Andrew\\AppData\\Local\\Programs\\Python\\Python37\\python.exe",
+    "python.pythonPath": "/home/andrew/anaconda3/bin/python",
     "files.associations": {
         "ostream": "cpp",
         "iostream": "cpp"

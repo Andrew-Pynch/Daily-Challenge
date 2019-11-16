@@ -4,6 +4,9 @@ def reverse(s):
         str = i + str
     return str
 
+
+
+
 def palindrome_detector(string):
     string = list(string) # make each character an entry in a list
     
@@ -20,17 +23,42 @@ def palindrome_detector(string):
         return False;
 
 
+
+
 def word_frequency(string):
-    # Turn input string into a list of words
-    list_words = list_words.split()
+    unique_count = dict()
 
-    word_frequency = []
+    words = string.split()
+
+    for word in words:
+        if word in unique_count:
+            unique_count[word] += 1
+        else:
+            unique_count[word] = 1
+    
+    # Return the dictionary countaining each word and its frequency
+    return(unique_count)
 
 
-    # TODO
-    # HOW AM I GOING TO IMPLEMENT A COUNT FUNCTION?
-    for i in list_words:
-        word_frequency.append(list_words.count(i))
+
+
+def specific_frequency(string, specific_word):
+    words = string.split()
+
+    # Initialize the count of the specific word we are looking for
+    specific_count = 0
+
+    for i in words:
+        if words[i] == specific_word:
+            specific_count += 1
+        else:
+            continue
+
+    
+    return(specific_count)
+
+
+
 
     
         
