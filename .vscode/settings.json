@@ -1,7 +1,10 @@
 {
-    "python.pythonPath": "/home/andrew/anaconda3/bin/python",
+    "python.pythonPath": "C:\\Users\\zjelm\\Anaconda3\\python.exe",
     "files.associations": {
         "ostream": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "*.tcc": "cpp",
+        "string": "cpp",
+        "string_view": "cpp"
     }
 }

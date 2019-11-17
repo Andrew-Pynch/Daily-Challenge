@@ -1,10 +1,8 @@
 #include <iostream>
 #include <string>
-#include <string.h>
-#include <math.h>
+#include <cmath>
 
 using namespace std;
-
 
 /*********************************************************************
  * PRACTICE FUNCTIONS
@@ -20,12 +18,8 @@ using namespace std;
 *********************************************************************/
 void get_string(string *str)
 {
-       string temp;
        cout << "Please enter your string: " << endl;
-       getline(cin, temp);
-       cout << temp << endl;
-
-       str = &temp;    //changes the contents of str to the value of temp.at
+       getline(cin, *str);
 }
 
 /*********************************************************************
@@ -39,7 +33,6 @@ void set_replace_string(string *copy)
 {
     for (int i = 0; i < (*copy).length(); i++)      
     {
-        cout << "In the for loop" << endl;
         if ((*copy).at(i) != ' '){
             (*copy).at(i) = char(45);
             cout << "Still working" << endl;
@@ -62,24 +55,25 @@ void set_replace_string(string *copy)
 ** Pre-Conditions: string *str1, string str2
 ** Post-Conditions: string *str1, string str2, returns the number of letters found;
 *********************************************************************/
-int get_search_replace(char select, string str1, string &str2)
-{
-    int lettersFound;
+int get_search_replace(string str1, string &str2)
+{  
+    char select;
+    cout << "Please enter the letter you would like to search for: ";
+    cin >> select;
+    
+    int lettersFound = 0;
     for(int i = 0; i < str1.length(); i++)
+    {
         if (str1[i] == select)
         {
-            str2[i] == select;
+            str2[i] = select;     
             lettersFound++;
         }
-    
+    }
     return lettersFound;
 }
-                        
 
-
-/*********************************************************************
- * MEMORY MANAGEMENT
- * Write functions to create memory on the heap
+/* Write functions to create memory on the heap
 *********************************************************************/ 
 void make_string()
 {
@@ -95,9 +89,6 @@ void create_loooooooong_array(int size)
         cout << avrg_pen_size[i] << endl;
     delete [] avrg_pen_size; 
 }
-
-
-
 
 int new_number()
 {
@@ -115,25 +106,44 @@ int new_number()
 }
     
 
+
+
+    
 int main() //Copy string
 {
-    string *original;
+    string *original = new string;
         
     get_string(original);
-    
+
+    cout << "Content of original: " << *original << endl;
+    cout << "Address original points to: " << original << endl;
+    cout << "Address of original: " << &original << endl << endl;
+
     // // COPY STRING 
-    string *copy = *original;
+    string *copy = new string;    //copy is same value as original but new memory
+    *copy = *original;
     
+    //cout << (*copy).length() << endl;
+
+
     // // FUNCTION CALLS First string sent is unaltered/original
-    cout << "I made it here! :-)" << endl;
     set_replace_string(copy);
     
-    // int lettersFound;
-    //get_search_replace(original, copy);
-    // cout << "letters found: " << lettersFound;
+    cout << "copy: " << *copy << endl;
+	cout << "original: " << *original << endl;
+
+    int lettersFound;
+
+    get_search_replace(*original, *copy); 
+
+    cout << *copy << endl;
+
+
+    
+    //cout << "letters found: " << lettersFound;
 
     //create_loooooooong_array(4);
     
     //check_int();
     
-}
+}   

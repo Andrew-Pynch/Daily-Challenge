@@ -5,8 +5,6 @@ def reverse(s):
     return str
 
 
-
-
 def palindrome_detector(string):
     string = list(string) # make each character an entry in a list
     
@@ -21,8 +19,6 @@ def palindrome_detector(string):
         return True
     else:
         return False;
-
-
 
 
 def word_frequency(string):
@@ -57,11 +53,3 @@ def specific_frequency(string, specific_word):
     
     return(specific_count)
 
-
-
-
-    
-        
-    
-
-        
