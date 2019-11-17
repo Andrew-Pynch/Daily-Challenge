@@ -80,6 +80,7 @@ void make_string()
     {
         cout << *name << endl;
     }
+    delete name;
 }
 
 void create_loooooooong_array(int size)
@@ -92,7 +93,7 @@ void create_loooooooong_array(int size)
     delete [] avrg_pen_size; 
 }
 
- new_number()
+void new_number()
 {
     int *new_numbah ; 
     new_numbah = new int[3];
@@ -110,8 +111,11 @@ void create_loooooooong_array(int size)
     
 int main() //Copy string
 {
+    //***************************************************//
+    //PART 1:
+    
     string *original = new string;
-        
+
     get_string(original);
 
     cout << "Content of original: " << *original << endl;
@@ -137,8 +141,19 @@ int main() //Copy string
     cout << *copy << endl;
 
     cout << "letters found: " << lettersFound;
-
+    
+    // Clear up memory blocks
     delete copy;
     delete original;
+
+
+
+    //***************************************************//
+    //Call functions to test heap memory:
+    make_string();
+    create_loooooooong_array(4);
+    new_number();
+
+
 
 }   
