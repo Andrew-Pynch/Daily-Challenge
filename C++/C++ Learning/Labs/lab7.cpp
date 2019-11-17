@@ -35,11 +35,9 @@ void set_replace_string(string *copy)
     {
         if ((*copy).at(i) != ' '){
             (*copy).at(i) = char(45);
-            cout << "Still working" << endl;
         }
         else{
             (*copy).at(i) = char(32);
-            cout << "Still working" << endl;
         }
     }
 }
@@ -78,19 +76,23 @@ int get_search_replace(string str1, string &str2)
 void make_string()
 {
     string *name = new string;
+    for (int i = 0; i < 10; i++)
+    {
+        cout << *name << endl;
+    }
 }
 
 void create_loooooooong_array(int size)
 {
     int *avrg_pen_size = new int[size];
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < 10; i++)
         avrg_pen_size[i] = rand() % 9 + 1;
-     for (int i = 0; i < 100; i++)
-        cout << avrg_pen_size[i] << endl;
+     for (int i = 0; i < 10; i++)
+        cout << avrg_pen_size[i];
     delete [] avrg_pen_size; 
 }
 
-int new_number()
+ new_number()
 {
     int *new_numbah ; 
     new_numbah = new int[3];
@@ -104,9 +106,6 @@ int new_number()
     }    
     delete [] new_numbah; 
 }
-    
-
-
 
     
 int main() //Copy string
@@ -125,25 +124,21 @@ int main() //Copy string
     
     //cout << (*copy).length() << endl;
 
-
     // // FUNCTION CALLS First string sent is unaltered/original
     set_replace_string(copy);
     
     cout << "copy: " << *copy << endl;
 	cout << "original: " << *original << endl;
 
-    int lettersFound;
+    int lettersFound = 0;
 
     get_search_replace(*original, *copy); 
 
     cout << *copy << endl;
 
+    cout << "letters found: " << lettersFound;
 
-    
-    //cout << "letters found: " << lettersFound;
+    delete copy;
+    delete original;
 
-    //create_loooooooong_array(4);
-    
-    //check_int();
-    
 }   
