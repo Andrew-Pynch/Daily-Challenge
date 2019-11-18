@@ -122,13 +122,12 @@ int main() //Copy string
     cout << "Address original points to: " << original << endl;
     cout << "Address of original: " << &original << endl << endl;
 
-    // // COPY STRING 
+    // COPY STRING 
     string *copy = new string;    //copy is same value as original but new memory
     *copy = *original;
     
-    //cout << (*copy).length() << endl;
 
-    // // FUNCTION CALLS First string sent is unaltered/original
+    // FUNCTION CALLS
     set_replace_string(copy);
     
     cout << "copy: " << *copy << endl;
@@ -153,7 +152,4 @@ int main() //Copy string
     make_string();
     create_loooooooong_array(4);
     new_number();
-
-
-
 }   
