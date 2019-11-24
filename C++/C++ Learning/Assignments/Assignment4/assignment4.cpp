@@ -8,27 +8,83 @@ Description: Detect Palindromes, Count word frequency, count frequency of given 
 #include <string>
 #include <cstring>
 #include <cmath>
+#include <bits/stdc++.h> 
 
 using namespace std;
 
-// Get c - style string
+// Get c - style string less than 1025 characters
 void get_string(char *str)
 {
     cout << "Please enter a string: ";
     cin.getline(str, 1025);
 }
 
-void purge_string_space(char *dirty_string, char *clean_string)
-{
-    
-    for (int i = 0; i < strlen(dirty_string); i++)
+
+
+
+// Function to remove all spaces from a given string 
+void remove_spaces(char *str) 
+{ 
+    int space_count = 0; 
+  
+    for (int i = 0; str[i]; i++) 
     {
-        cout << "HI" << endl;
-    } 
+        if (str[i] != ' ') 
+        {
+            str[space_count++] = str[i];
+        }
+    }
+
+    str[space_count] = '\0'; 
+} 
+
+
+
+
+
+// Function to reverse a string
+void reverse_string(char *str)
+{
+    for (int i = 0; i < (strlen(str)) / 2; i++)
+    {
+        swap(str[i], str[(strlen(str)) - i - 1]);
+    }
 }
 
 
 
+// COnverts all chars in a string to lowercase variants
+void to_lower(char *str)
+{
+    int str_len = strlen(str);
+
+    for (int i = 0; i < str_len; i++)
+    {
+        if ((65 <= str[i]) && (str[i] <= 90))
+        {
+            str[i] = str[i] + 32;
+        }
+    }
+}
+
+
+
+
+bool palindrome(char *str)
+{
+    char temp[1025];
+    // Copy the values of str into temp with a new memory location for temp
+    strcpy(str, temp);
+
+    if (str == temp)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 
 int main()
 {
@@ -43,8 +99,17 @@ int main()
     cout << strlen(input) << endl;
     */
 
-   purge_string_space(input);
+
+    remove_spaces(input);
+    cout << input << endl;
+
+    reverse_string(input);
+    cout << "Reversed: " << input << endl;
+
+    to_lower(input);
+    cout << "Lowercase: " << input << endl;
 
 
-   return 0;
+
+    return 0;
 }
