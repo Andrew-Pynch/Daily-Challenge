@@ -9,8 +9,14 @@ Description: Detect Palindromes, Count word frequency, count frequency of given 
 #include <cstring>
 #include <cmath>
 #include <bits/stdc++.h> 
+#include <stdio.h> 
+#include <string.h> 
+#include <stdbool.h> 
 
 using namespace std;
+
+
+
 
 // Get c - style string less than 1025 characters
 void get_string(char *str)
@@ -26,6 +32,7 @@ void get_string(char *str)
 void remove_spaces(char *str) 
 { 
     int space_count = 0; 
+
   
     for (int i = 0; str[i]; i++) 
     {
@@ -38,18 +45,6 @@ void remove_spaces(char *str)
     str[space_count] = '\0'; 
 } 
 
-
-
-
-
-// Function to reverse a string
-void reverse_string(char *str)
-{
-    for (int i = 0; i < (strlen(str)) / 2; i++)
-    {
-        swap(str[i], str[(strlen(str)) - i - 1]);
-    }
-}
 
 
 
@@ -70,46 +65,82 @@ void to_lower(char *str)
 
 
 
-bool palindrome(char *str)
+void palindrome(char *str)
 {
-    char temp[1025];
-    // Copy the values of str into temp with a new memory location for temp
-    strcpy(str, temp);
+    int l = 0;
+    int r = strlen(str) - 1;
 
-    if (str == temp)
+    // Keep comparing up to the midpoint of the string
+    while (r > l)
     {
-        return true;
-    }
-    else
-    {
-        return false;
+        if (str[l++] != str[r--])
+        {
+            cout << str << " is not a Palindrome" << endl;
+        }
+        else
+        {
+            cout << str << " is a Palindrome" << endl;
+            break;
+        }
     }
 }
+
+
+
+void removeSpecialCharacter(string str) 
+{ 
+	int j = 0; 
+	for (int i = 0; i < s.size(); i++) { 
+		
+		// Store only valid characters 
+		if ((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >='a' && str[i] <= 'z')) 
+		{ 
+			str[j] = str[i]; 
+			j++; 
+		} 
+	} 
+	cout << s.substr(0, j); 
+} 
+
+
+
+void selection()
+{
+    int input;
+
+    cout << "Welcome to Assignment 4 " << endl;
+    cout << "Select one of the following numbers for a program subcomponent" << endl;
+    
+    cout << "1 for Palindrome Detector: " << endl;
+    cout << "2 for Generic Word Counter: " << endl;
+    cout << "3 for Search Word Count" << endl;
+    if (input == 1)
+    {
+        palindrome();
+    }
+}
+
+
+
 
 int main()
 {
     char *input = new char;
     get_string(input);
 
-    /*
-    cout << "Content of input: " << *input << endl;
-    cout << "Address input points to: " << input << endl;
-    cout << "Address of input: " << &input << endl << endl;
 
-    cout << strlen(input) << endl;
-    */
-
-
+    // REMOVE SPACES
     remove_spaces(input);
-    cout << input << endl;
 
-    reverse_string(input);
-    cout << "Reversed: " << input << endl;
 
+    // MAKE THE OUTPUT LOWERCASE
     to_lower(input);
-    cout << "Lowercase: " << input << endl;
 
+    // Remove Specials
+    removeSpecialCharacter(input);
 
+    // TEST PALINDROMITY
+    //palindrome(input);
 
     return 0;
 }
