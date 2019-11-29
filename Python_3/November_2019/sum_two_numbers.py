@@ -14,8 +14,12 @@ def get_target():
 
 
 def two_sum(numbers, target):
-    while True:
-        for i in range(len(numbers)):
-            print(numbers[i])
+    for i in range(len(numbers)):
+        print(numbers[i])
+    
+    for i in range(len(numbers[::-1])):
+        print(numbers[i])
 
-two_sum(get_numbers(), get_target())
+#two_sum(get_numbers(), get_target())
+two_sum([1, 2, 3], 3)
+
