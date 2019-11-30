@@ -13,13 +13,22 @@ def get_target():
     return (target)
 
 
-def two_sum(numbers, target):
-    for i in range(len(numbers)):
-        print(numbers[i])
-    
-    for i in range(len(numbers[::-1])):
-        print(numbers[i])
+# Hyper brute force approach. 
+# Basically looks for every possible pair of numbers in the list and checks if the sum of the pair returns the target
+def two_sum_nieve(numbers, target):
+    for i in range(len(numbers) - 1):
+        for j in range(i + 1, len(numbers)):
+            if numbers[i] + numbers[j] == target:
+                print(numbers[i], numbers[j])
+                return True
+    # If the algorithm can't find a pair that adds up to the target return False
+    return False
 
-#two_sum(get_numbers(), get_target())
-two_sum([1, 2, 3], 3)
+
+A = [2, 4, 6]
+target = 10
+
+
+
+
 
