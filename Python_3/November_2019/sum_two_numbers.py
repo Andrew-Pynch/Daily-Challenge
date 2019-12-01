@@ -25,10 +25,14 @@ def two_sum_nieve(numbers, target):
     return False
 
 
-A = [2, 4, 6]
-target = 10
-
-
-
-
-
+'''def two_sum_hashtable(numbers, target):
+    ht = dict()
+    for i in range(len(numbers)):
+        if numbers[i] in ht:
+            print(ht[numbers[i]], numbers[i])
+            return True
+        else:
+            ht[target - numbers[i] = numbers[i]]'''
+# I need to learn more about hash tables. To be perfectly honest I'm not even sure what they are yet.
+# I know that they represent an 80/20 ratio in terms of bang for buck programming concepts... 
+# Excited to learn!     
