@@ -15,25 +15,7 @@ Description: Connect 4 Game
 
 using namespace std;
 
-int init_board(int rows, int cols)
-{
-    int board[rows][cols];
 
-    for (int i=0; i<rows; i++)
-    {
-        for (int j=0; j<cols; j++)
-        {
-            if (i % 2 == 0 && j % 2 == 0)
-                cout << "|\033[30;47m " << board[i][j] << " ";
-            else if (i % 2 == 1 && j % 2 == 1)
-                cout << "|\033[30;47m " << board[i][j] << " ";
-            else
-                cout << "|\033[0m " << board[i][j] << " ";
-                cout << "\033[0m";
-        }
-        cout << endl;
-    }
-}
 
 
 int get_input(string message, int max)
@@ -62,37 +44,70 @@ int get_input(string message, int max)
 }
 
 
+
+
 void program_init(int &players, int &rows, int &cols)
 {
-    if (0 < players < 3)
+    if (players > 0 && players < 3)
     {
-        players = players; 
+        players = players;
+        cout << "Players = " << players << endl;
     }
     else
     {
         players = get_input("Invalid Number of Players: You may select Single-Player (1) or Multi-Player(2)", 2);
+        cout << "Players = " << players << endl;
     }
 
 
-    if (0 < rows < 21)
+    if (rows > 0 && rows < 21)
     {
         rows = rows;
+        cout << "Rows = " << rows << endl;
     }
     else
     {
         rows = get_input("Invalid Number of Rows: Rows must be < 0 & >= 21", 21);
+        cout << "Rows = " << rows << endl;
     }
 
 
-    if (0 < cols < 21)
+    if (cols > 0 && cols < 21)
     {
         cols = cols;
+        cout << "Cols = " << cols << endl;
     }
     else
     {
         cols = get_input("Invalid Number of Cols: Cols must be < 0 & >= 21", 21);
+        cout << "Cols = " << cols << endl;
     }
-}    
+}   
+
+
+
+
+int init_board(int rows, int cols)
+{
+    int board[rows][cols];
+
+    for (int i=0; i<rows; i++)
+    {
+        for (int j=0; j<cols; j++)
+        {
+            if (i % 2 == 0 && j % 2 == 0)
+                cout << "|\033[30;47m " << board[i][j] << " ";
+            else if (i % 2 == 1 && j % 2 == 1)
+                cout << "|\033[30;47m " << board[i][j] << " ";
+            else
+                cout << "|\033[0m " << board[i][j] << " ";
+                cout << "\033[0m";
+        }
+        cout << endl;
+    }
+}
+
+
 
 
 int main(int argc, const char **argv)
@@ -100,10 +115,7 @@ int main(int argc, const char **argv)
     int players = atoi(argv[1]);
     int rows = atoi(argv[2]);
     int cols = atoi(argv[3]);
-    
-    cout << "Players = " << players << endl;
-    cout << "Rows = " << rows << endl;
-    cout << "Columns = " << cols << endl;
 
     program_init(players, rows, cols);
+    init_board(rows, cols);
 }
