@@ -12,4 +12,4 @@ def fizz_buzz(upper_bound):
         else:
             print(i)
 
-fizz_buzz(100)
+fizz_buzz(int(input("Please enter the upper bound you would like to run fizz_buzz() up to: ")))
