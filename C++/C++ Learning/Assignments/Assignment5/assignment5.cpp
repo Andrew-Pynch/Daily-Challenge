@@ -11,7 +11,9 @@ Description: Connect 4 Game
 #include <bits/stdc++.h> 
 #include <stdio.h> 
 #include <string.h> 
-#include <stdbool.h> 
+#include <stdbool.h>     
+#include <stdlib.h>     
+#include <time.h>       
 
 using namespace std;
 
@@ -116,7 +118,7 @@ void display_cols(int cols)
     cout << endl;
 }
 
-void display_board(int rows, int cols, string ** board)
+void display_board(int rows, int cols, string** &board)
 {
     display_cols(cols);
 
@@ -144,19 +146,70 @@ void display_board(int rows, int cols, string ** board)
 
 
 
-void refresh_board(int turn, int rows, int cols, int player, string** &board)
+
+bool check_full(int turn, int rows, int cols, string** &board)
 {
-    for (int i = rows - 1; i >= 0; i--)
+    if (board[0][turn] == "X" || board[0][turn] == "O")
     {
-        if (board[i][turn] == " ")
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+
+
+bool check_empty(int turn, int rows, int cols, string** &board)
+{
+    int tempr = rows - 1;
+    if(board[tempr][turn] == " ")
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+
+
+
+void empty_col_move(int turn, int rows, int cols, int player, string** &board)
+{
+    int tempr = rows - 1;
+    if (board[tempr][turn] == " ")
+    {
+        if (player == 1)
+        {
+            board[tempr][turn] = "X";
+        }
+        else if (player == 2)
+        {
+            board[tempr][turn] = "O";
+        }
+    }     
+}
+
+
+
+void normal_move(int turn, int rows, int cols, int player, string** &board)
+{
+    int tempr;
+    for (int i = 0; i < rows; i++)
+    {
+        tempr = i - 1;
+        if (board[i][turn] == "X" || board[i][turn] == "O")
         {
             if (player == 1)
             {
-                board[i][turn] == "X";
+                board[tempr][turn] = "X";
             }
-            else
+            else if (player == 2)
             {
-                board[i][turn] == "O";
+                board[tempr][turn] = "O";
             }
         }
     }
@@ -165,22 +218,122 @@ void refresh_board(int turn, int rows, int cols, int player, string** &board)
 
 
 
-void single_player(int rows, int cols, string** &board)
+void refresh_board(int turn, int rows, int cols, int player, string** &board)
 {
-    display_board(rows, cols, board);
-
-    int turn;
-
-    bool condition = true;
-    while (condition)
+    if (check_full(turn, rows, cols, board) == true)
     {
-        turn = get_input("Player 1: Enter the column you would like to drop your piece in: ", cols) - 1;
-        refresh_board(turn, rows, cols, 1, board);
-        display_board(rows, cols, board);
-
-        //check win conditions
+        cout << "This column is full! Please enter a different move!" << endl;
+    }
+    else if (check_empty(turn, rows, cols, board) == true)
+    {
+        empty_col_move(turn, rows, cols, player, board);
+    }
+    else if (check_full(turn, rows, cols, board) == false && check_empty(turn, rows, cols, board) == false)
+    {
+        normal_move(turn, rows, cols, player, board);
     }
 }
+
+
+
+
+bool player_1_first(int player)
+{
+    int choice;
+    cout << "Player: " << player << ", would you like to go first? " << endl;
+    cout << "Yes(1), No(2) ";
+    cin >> choice;
+
+    if (choice == 1)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+    
+}
+
+
+
+int player_switch(int &player)
+{
+    if (player == 1)
+    {
+        player = 2;
+        return player;
+    }
+    else if (player == 2)
+    {
+        player = 1;
+        return player;
+    }
+    else
+    {
+        player = get_input("Inavlid player count. Please enter Single-Player(1) or Multi-Player(2)", 2);
+    }
+}
+
+
+
+
+bool tie(int rows, int cols, string** &board)
+{
+    bool all_true;
+    for (int i = 0; i < cols; i++)
+    {
+        if (board[0][i] == "X" || board[0][i] == "O")
+        {
+            all_true = true;
+        }
+        else
+        {
+            all_true = false;
+        }
+    }
+    return all_true;
+}
+
+
+
+
+
+
+int ai(int rows, int cols, int player, string** &board)
+{
+    player = 2;
+    srand (time(NULL));
+    int turn = rand() % (cols - 1);
+}
+
+
+void single_player(int rows, int cols, int player, string** &board)
+{
+    int turn;
+    player = 1;
+    display_board(rows, cols, board);
+
+    while(true)
+    {
+        if (player == 1)
+        {
+            cout << "Player: " << player;
+            turn = get_input(" Please enter your move: ", cols) - 1;
+            refresh_board(turn, rows, cols, player, board);
+        }
+        player_switch(player);
+        if (player == 2)
+        {
+            cout << "AI is making its move: " << endl;
+        }
+        break;
+    }
+    // Check all win conditions
+    single_player(rows, cols, player, board);
+}
+
+
 
 
 bool play_again()
@@ -209,6 +362,7 @@ bool play_again()
 int main(int argc, char** argv)
 {
     int players = 0, rows = 0, cols = 0;
+    int player = 1;
     string **board;
     bool again = true;
 
@@ -228,17 +382,20 @@ int main(int argc, char** argv)
 
         // Instantiate gameboard
         inst_board(rows, cols, board);
-        refresh_board
-
-        /*if (players == 1)
-        {
-            single_player(rows, cols, board);
-        }
-        else
-        {
-            //multi_player(rows, cols, board);
-        }*/
         
+
+        // Test that refresh_board can update the posistion of pieces
+        /*cout << "Player = " << player << endl;
+        cout << "Rows = " << rows << endl;
+        cout << "Cols = " << cols << endl;
+
+        player_1_first(player);*/
+
+        int turn = rand() % cols + 1;
+        cout << "RNG Number: " << turn << endl;
+        //single_player(rows, cols, player, board);
+
+
 
 
 
