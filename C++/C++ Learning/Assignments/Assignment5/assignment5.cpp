@@ -300,15 +300,17 @@ bool tie(int rows, int cols, string** &board)
 
 
 
-int ai(int rows, int cols, int player, string** &board)
+int ai(int rows, int cols, int &player, string** &board)
 {
     player = 2;
     srand (time(NULL));
     int turn = rand() % (cols - 1);
+    refresh_board(turn, rows, cols, player, board);
+    return player;
 }
 
 
-void single_player(int rows, int cols, int player, string** &board)
+void single_player(int rows, int cols, int &player, string** &board)
 {
     int turn;
     player = 1;
@@ -326,6 +328,7 @@ void single_player(int rows, int cols, int player, string** &board)
         if (player == 2)
         {
             cout << "AI is making its move: " << endl;
+            ai(rows, cols, player, board);
         }
         break;
     }
@@ -385,14 +388,18 @@ int main(int argc, char** argv)
         
 
         // Test that refresh_board can update the posistion of pieces
-        /*cout << "Player = " << player << endl;
+        cout << "Player = " << player << endl;
         cout << "Rows = " << rows << endl;
         cout << "Cols = " << cols << endl;
 
-        player_1_first(player);*/
+        player_1_first(player);
 
-        int turn = rand() % cols + 1;
-        cout << "RNG Number: " << turn << endl;
+        board[4][0] = "X";
+        board[4][1] = "X";
+        board[4][2] = "X";
+        board[4][3] = "X";
+        board[4][4] = "X";
+        display_board(rows, cols, board);
         //single_player(rows, cols, player, board);
 
 
