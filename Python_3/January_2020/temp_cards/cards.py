@@ -4,6 +4,11 @@
 
 import random  # required for shuffle method of Deck
 
+# APPROVED CHANGES:
+# Professor, as we discussed some of the code you provided did not work as expected
+# With thing in mind I made 2 changes
+# added __format__ method to class Card
+# edit pretty_print() method of class Deck
 
 class Card:
     """
@@ -31,6 +36,13 @@ class Card:
             if suit in range(1, 5) and rank in range(1, 15):
                 self.__suit = suit
                 self.__rank = rank
+
+    def __format__(self, spec):
+        '''Formats a card for printing'''
+        if spec != None:
+            return format(str(self), spec)
+        elif spec == None:
+            return "Z"
 
     def get_rank(self):
         """Return the rank of the Card."""

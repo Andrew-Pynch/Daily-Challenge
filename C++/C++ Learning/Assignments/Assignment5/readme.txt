@@ -21,6 +21,7 @@ cd Documents/Downloads
 
 2.) Compile the Source Code
 g++ assignment5.cpp -o assignment 5
+(note: You will probably recieve a couple of warnings. This is normal, so dont worry! :-))
 
 3.) Run the program with command line arguements 
 ./assignment5 (gamemode), (rows), (cols)
