@@ -3,10 +3,10 @@
 from cards import *
 
 def cleanup_tableau(tableau):
-    tableau[4][6] = ' '
-    tableau[5][6] = ' '
-    tableau[6][6] = ' '
-    tableau[7][6] = ' '
+    del tableau[4][6]
+    del tableau[5][6] 
+    del tableau[6][6] 
+    del tableau[7][6] 
     return tableau
 
 
@@ -37,7 +37,7 @@ def setup():
     return foundation, tableau, cell
 
 
-def move_to_foundation(tableau, foundation, t_col, f_col):
+def tableau_to_foundation(tableau, foundation, t_col, f_col):
     """[summary]
 
     Arguments:
@@ -53,10 +53,20 @@ def move_to_foundation(tableau, foundation, t_col, f_col):
     # returns: Boolean (True if the move is valid, False otherwise)
     # moves a card at the end of a column of tableau to a column of foundation
     # This function can also be used to move a card from cell to foundation
-    pass
+
+    # Grab the last card of the selected column
+    card = tableau[t_col - 1][-1]
+
+    # Delete the last card of the selected column
+    del tableau[t_col - 1][-1]
+
+    # Add that card to the selected location in the foundation
+    foundation = foundation[f_col - 1].append(card)
+
+    return tableau, foundation
 
 
-def move_to_cell(tableau, cell, t_col, c_col):
+def tableau_to_cell(tableau, cell, t_col, c_col):
     """[summary]
 
     Arguments:
@@ -71,10 +81,20 @@ def move_to_cell(tableau, cell, t_col, c_col):
     # parameters: a tableau, a cell, column of tableau, column of cell
     # returns: Boolean (True if the move is valid, False otherwise)
     # moves a card at the end of a column of tableau to a cell
-    pass
+
+    # Grab the last card of the selected column
+    card = tableau[t_col - 1][-1]
+
+    # Delete the last card of the selected column
+    del tableau[t_col - 1][-1]
+
+    # Add that card to the selected location in the foundation
+    cell = cell[c_col - 1].append(card)  
+
+    return tableau, cell
 
 
-def move_to_tableau(tableau, foundation, t_col, f_col):
+def tableau_to_tableau(foundation, tableau, cell, t_col, tdest_col):
     """[summary]
 
     Arguments:
@@ -90,7 +110,46 @@ def move_to_tableau(tableau, foundation, t_col, f_col):
     # returns: Boolean (True if the move is valid, False otherwise)
     # moves a card in the cell to a column of tableau
     # remember to check validity of move
-    pass
+    if t_col == tdest_col:
+        print("INVALID MOVE:\n You cannot move a card into the same column")
+        play(foundation, tableau, cell)
+    else:
+        # Grab the last card of the selected column  
+        card = tableau[t_col - 1][-1]
+
+        # Delete the last card of the selected column
+        del tableau[t_col - 1][-1]
+
+        # Add that card to the selected location in the foundation
+        tableau = tableau[tdest_col - 1].append(card)  
+
+        return tableau
+
+ 
+def cell_to_tableau(foundation, tableau, cell, c_col, t_col):
+    # Grab the last card of the selected column  
+    card = cell[c_col - 1][-1]
+
+    # Delete the last card of the selected column
+    del cell[c_col - 1][-1]
+
+    # Add that card to the selected location in the foundation
+    tableau = tableau[t_col - 1].append(card)  
+
+    return tableau, cell   
+
+
+def cell_to_foundation(foundation, tableau, cell, c_col, f_col):
+    # Grab the last card of the selected column  
+    card = cell[c_col - 1][-1]
+
+    # Delete the last card of the selected column
+    del cell[c_col - 1][-1]
+
+    # Add that card to the selected location in the foundation
+    foundation = foundation[f_col - 1].append(card)  
+
+    return foundation, cell   
 
 
 def is_winner(foundation):
@@ -104,24 +163,6 @@ def is_winner(foundation):
     """
     # parameters: a foundation
     # return: Boolean
-    pass
-
-
-def move_in_tableau(tableau, t_col_source, t_col_dest):
-    """[summary]
-
-    Arguments:
-        tableau {[type]} -- [description]
-        t_col_source {[type]} -- [description]
-        t_col_dest {[type]} -- [description]
-
-    Returns:
-        [type] -- [description]
-    """
-    # parameters: a tableau, the source tableau column and the destination tableau column
-    # returns: Boolean
-    # move card from one tableau column to another
-    # remember to check validity of move
     pass
 
 
@@ -154,7 +195,7 @@ def print_game(foundation, tableau, cell):
     for c in cell:
         # print if there is a card there; if not, exception prints spaces.
         try:
-            print("{:8s}".format(c[0]), end="")
+            print("    {:8s}".format(c[0]), end="")
         except IndexError:
             print("{:8s}".format(""), end="")
 
@@ -162,7 +203,7 @@ def print_game(foundation, tableau, cell):
     for stack in foundation:
         # print if there is a card there; if not, exception prints spaces.
         try:
-            print("{:8s}".format(stack[-1]), end="")
+            print("    {:8s}".format(stack[-1]), end="")
         except IndexError:
             print("{:8s}".format(""), end="")
 
@@ -221,21 +262,24 @@ def show_help():
     # returns: nothing
     # prints the supported commands
     print("Responses are: ")
-    print("\t t2f #T #F - move from Tableau to Foundation")
-    print("\t t2t #T1 #T2 - move card from one Tableau column to another")
-    print("\t t2c #T #C - move from Tableau to Cell")
+    print("\t t2f #T #F - move from Tableau to Foundation") # X
+    print("\t t2t #T1 #T2 - move card from one Tableau column to another") # X
+    print("\t t2c #T #C - move from Tableau to Cell") # X
     print("\t c2t #C #T - move from Cell to Tableau")
     print("\t c2f #C #F - move from Cell to Foundation")
     print("\t 'h' for help")
     print("\t 'q' to quit")
 
 
-def play():
-    """Main program. Does error checking on the user input."""
-    print_rules()
-    foundation, tableau, cell = setup()
+def get_cols(source_name, dest_name):
+    source = int(input("Please enter the source column from %s: " % (source_name)))
+    dest = int(input("Please enter the destination column from %s: " % (dest_name)))
 
-    show_help()
+    return source, dest
+
+def play(foundation, tableau, cell):
+    """Main program. Does error checking on the user input."""
+
     while True:
         # Uncomment this next line. It is commented out because setup doesn't
         # do anything so printing doesn't work.
@@ -246,15 +290,20 @@ def play():
         if len(response_list) > 0:
             r = response_list[0]
             if r == "t2f":
-                print("You selected t2f")
+                source, dest = get_cols('Tableau', 'Foundation')
+                tableau_to_foundation(tableau, foundation, source, dest)
             elif r == "t2t":
-                pass  # you implement
+                source, dest = get_cols('Tableau', 'Tableau')
+                tableau_to_tableau(foundation, tableau, cell, source, dest)
             elif r == "t2c":
-                pass  # you implement
+                source, dest = get_cols('Tableau', 'Cell')
+                tableau_to_cell(tableau, cell, source, dest)
             elif r == "c2t":
-                pass  # you implement
+                source, dest = get_cols('Cell', 'Tableau')
+                cell_to_tableau(foundation, tableau, cell, source, dest)
             elif r == "c2f":
-                pass  # you implement
+                source, dest = get_cols('Cell', 'Foundation')
+                cell_to_foundation(foundation, tableau, cell, source, dest)
             elif r == "q":
                 break
             elif r == "h":
@@ -265,7 +314,19 @@ def play():
             print("Unknown Command:", response)
     print("Thanks for playing")
 
+def start():
+    foundation, tableau, cell = setup()
+    play(foundation, tableau, cell)
+    print_rules()
+    show_help()
 
-# play()
-foundation, tableau, cell = setup()
-print_game(foundation, tableau, cell)
+
+start()
+
+
+
+
+
+
+
+
